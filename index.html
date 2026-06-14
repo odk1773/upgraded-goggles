@@ -2,14 +2,43 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>네버랜드 기념 사진 저장하기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🧚 네버랜드 기념 사진 저장하기</title>
     <style>
-        body { text-align: center; background: #f9f9f9; padding-top: 40px; font-family: sans-serif; color: #333; }
-        h2 { font-size: 22px; color: #5d5d5d; }
-        p { font-size: 14px; color: #888; margin-bottom: 25px; }
-        .photo-container { width: 90%; max-width: 500px; margin: 0 auto; }
-        img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        body { 
+            text-align: center; 
+            background: #f9f9f9; 
+            padding-top: 30px; 
+            font-family: 'Malgun Gothic', sans-serif; 
+            color: #333;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        h2 { 
+            font-size: 20px; 
+            color: #4A4A4A; 
+            margin-bottom: 6px;
+        }
+        p { 
+            font-size: 13px; 
+            color: #888; 
+            margin-bottom: 20px; 
+        }
+        /* 사진이 들어가는 주머니 스타일 */
+        .photo-container { 
+            width: 90%; 
+            max-width: 450px; 
+            margin: 0 auto; 
+            padding-bottom: 40px;
+        }
+        /* 스마트폰 화면에 맞게 꽉 차고 이쁘게 정렬 */
+        img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 14px; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15); 
+            -webkit-touch-callout: default; /* 아이폰에서 꾹 눌렀을 때 저장 창이 잘 뜨도록 허용 */
+        }
     </style>
 </head>
 <body>
@@ -18,8 +47,16 @@
     <p>이미지를 꾹 누르면 스마트폰에 저장할 수 있습니다.</p>
     
     <div class="photo-container">
-        <img src="./photo1.png" alt="사진을 불러오는 중...">
+        <img id="neverlandPhoto" src="./photo1.png" alt="네버랜드 사진을 불러오는 중입니다...">
     </div>
 
+    <script>
+        // 스마트폰 브라우저가 옛날에 찍은 사진을 기억(캐싱)해서 보여주는 버그를 막기 위한 마법의 코드
+        // 주소 뒤에 미세한 실시간 숫자를 붙여서 무조건 '가장 최신 사진'을 강제로 띄우게 만듭니다.
+        const imageElement = document.getElementById('neverlandPhoto');
+        if (imageElement) {
+            imageElement.src = "./photo1.png?v=" + new Date().getTime();
+        }
+    </script>
 </body>
 </html>
