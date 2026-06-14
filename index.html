@@ -55,7 +55,9 @@
         // 주소 뒤에 미세한 실시간 숫자를 붙여서 무조건 '가장 최신 사진'을 강제로 띄우게 만듭니다.
         const imageElement = document.getElementById('neverlandPhoto');
         if (imageElement) {
-            imageElement.src = "./photo1.png?v=" + new Date().getTime();
+            // 🔥 [전시장 무인 연속 체험용 최종 치트키 고정]
+// 일반 주소 대신 깃허브 API 원본 주소를 다이렉트로 꽂아버리면 서버 딜레이가 0초가 됩니다!
+imageElement.src = "https://raw.githubusercontent.com/odk1773/upgraded-goggles/main/photo1.png?v=" + new Date().getTime();
         }
     </script>
 </body>
