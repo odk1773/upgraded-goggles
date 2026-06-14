@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>네버랜드 기념 사진 저장하기</title>
+    <style>
+        body { text-align: center; background: #f3f3f3; padding-top: 50px; font-family: sans-serif; }
+        img { max-width: 90%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body>
+    <h2>동화책 세상 속 나의 모습!</h2>
+    <p>이미지를 꾹 눌러서 저장하세요.</p>
+    <img id="targetImage" src="" alt="사진을 불러오는 중...">
+
+    <script>
+        // 주소창에서 ?file= 뒤에 오는 사진 이름을 알아내는 자바스크립트 코드
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileName = urlParams.get('file');
+        
+        if(fileName) {
+            // 같은 서버 안에 CapturedPhotos 폴더 속 사진을 매핑합니다.
+            document.getElementById('targetImage').src = "./CapturedPhotos/" + fileName;
+        }
+    </script>
+</body>
+</html>
